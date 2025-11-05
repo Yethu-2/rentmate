@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>RentMate — Features</title>
+
+        <!-- Inline the main frontend styles so this static page matches the app look -->
+        <style>
+            /* -- index.css (trimmed/copied) -- */
+            :root {
+                font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+                line-height: 1.5;
+                font-weight: 400;
+
+                color-scheme: light dark;
+                color: rgba(255, 255, 255, 0.87);
+                background-color: #242424;
+
+                font-synthesis: none;
+                text-rendering: optimizeLegibility;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+
+            a {
+                font-weight: 500;
+                color: #646cff;
+                text-decoration: inherit;
+            }
+            a:hover {
+                color: #535bf2;
+            }
+
+            body {
+                margin: 0;
+                display: flex;
+                place-items: center;
+                min-width: 320px;
+                min-height: 100vh;
+            }
+
+            h1 {
+                font-size: 3.2em;
+                line-height: 1.1;
+            }
+
+            button {
+                border-radius: 8px;
+                border: 1px solid transparent;
+                padding: 0.6em 1.2em;
+                font-size: 1em;
+                font-weight: 500;
+                font-family: inherit;
+                background-color: #1a1a1a;
+                cursor: pointer;
+                transition: border-color 0.25s;
+            }
+            button:hover {
+                border-color: #646cff;
+            }
+            button:focus,
+            button:focus-visible {
+                outline: 4px auto -webkit-focus-ring-color;
+            }
+
+            @media (prefers-color-scheme: light) {
+                :root {
+                    color: #213547;
+                    background-color: #ffffff;
+                }
+                a:hover {
+                    color: #747bff;
+                }
+                button {
+                    background-color: #f9f9f9;
+                }
+            }
+
+            /* -- App.css (trimmed/copied) -- */
+            #root {
+                max-width: 1280px;
+                margin: 0 auto;
+                padding: 2rem;
+                text-align: center;
+            }
+
+            .logo {
+                height: 6em;
+                padding: 1.5em;
+                will-change: filter;
+                transition: filter 300ms;
+            }
+            .logo:hover {
+                filter: drop-shadow(0 0 2em #646cffaa);
+            }
+
+            .card {
+                padding: 2em;
+            }
+
+            .read-the-docs {
+                color: #888;
+            }
+
+            /* Simple site layout for static page */
+            .site-header { padding: 1rem 0; }
+            .nav { display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+            .nav-links { list-style:none; display:flex; gap:1rem; margin:0; padding:0; }
+            .nav a { color: inherit; }
+            .content { padding: 2rem 0; }
+            .features-list { display:grid; gap:1.25rem; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); margin-top:1.5rem; }
+            article { background: rgba(255,255,255,0.03); padding:1rem; border-radius:8px; text-align:left; }
+        </style>
+        <link rel="stylesheet" href="/css/main.css" />
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <div class="brand">
+                    <div class="logo">RM</div>
+                    <div>
+                        <div style="font-weight:700">RentMate</div>
+                        <div style="font-size:0.82rem;color:var(--muted)">Property management, simplified</div>
+                    </div>
+                </div>
+                <nav aria-label="Main">
+                    <a href="/">Home</a>
+                    <a href="/features" aria-current="page">Features</a>
+                    <a href="/listings">Listings</a>
+                </nav>
+            </header>
+
+            <main class="hero" role="main">
+                <div class="hero-inner">
+                    <h1>Features</h1>
+                    <p class="lead">This static features page is served from <code>src/main/resources/static/features.html</code>.</p>
+
+                    <section class="features-list" aria-label="Features list">
+                        <article class="card">
+                            <h3>Search &amp; Filter</h3>
+                            <p class="muted">Find listings quickly with advanced search and filtering options.</p>
+                        </article>
+                        <article class="card">
+                            <h3>Secure Messaging</h3>
+                            <p class="muted">Communicate with landlords and tenants securely within the app.</p>
+                        </article>
+                        <article class="card">
+                            <h3>Dashboard</h3>
+                            <p class="muted">Manage listings, applications, and payments from one dashboard.</p>
+                        </article>
+                    </section>
+                </div>
+            </main>
+
+            <footer class="site-footer">
+                <p>&copy; <span id="year"></span> RentMate</p>
+            </footer>
+        </div>
+
+        <script>
+            document.getElementById('year').textContent = new Date().getFullYear();
+        </script>
+    </body>
+</html>

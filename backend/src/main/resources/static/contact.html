@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>RentMate — Contact</title>
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="brand">
+          <div class="logo">RM</div>
+          <div>
+            <div style="font-weight:700">RentMate</div>
+            <div style="font-size:0.82rem;color:var(--muted)">Property management, simplified</div>
+          </div>
+        </div>
+        <nav aria-label="Main">
+          <a href="/">Home</a>
+          <a href="/features">Features</a>
+          <a href="/listings">Listings</a>
+        </nav>
+      </header>
+
+      <main class="hero" role="main">
+        <div class="hero-inner">
+          <h1>Contact</h1>
+          <p class="lead">Have a question or want to list a property? Send a message and we'll respond promptly.</p>
+
+          <div class="card" style="margin-top:12px;">
+            <form id="contactForm" aria-labelledby="contactHeading">
+              <h3 id="contactHeading">Send us a message</h3>
+
+              <label for="name">Your name</label>
+              <input id="name" name="name" type="text" placeholder="Full name" required />
+
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required />
+
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="6" placeholder="How can we help?" required></textarea>
+
+              <div style="display:flex; gap:8px; margin-top:8px;">
+                <button class="btn" type="submit">Send message</button>
+                <button class="btn alt" type="button" id="clearBtn">Clear</button>
+              </div>
+
+              <!-- Use output for status to satisfy accessibility/linter guidance -->
+              <output id="status" class="muted" aria-live="polite" style="display:block; margin-top:12px;"></output>
+            </form>
+          </div>
+        </div>
+
+        <aside class="card" style="align-self:start;">
+          <h3>Contact Info</h3>
+          <p class="muted">Email: support@rentmate.example</p>
+          <p class="muted">Phone: (555) 555-0123</p>
+        </aside>
+      </main>
+
+      <footer class="site-footer">
+        <p>© <span id="year"></span> RentMate</p>
+      </footer>
+    </div>
+
+    <script>
+      // small demo behavior: save message to localStorage and show confirmation
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      const form = document.getElementById('contactForm');
+      const status = document.getElementById('status');
+      const clearBtn = document.getElementById('clearBtn');
+
+      clearBtn.addEventListener('click', () => {
+        form.reset();
+        status.value = '';
+      });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = {
+          name: form.name.value.trim(),
+          email: form.email.value.trim(),
+          message: form.message.value.trim(),
+          submittedAt: new Date().toISOString()
+        };
+
+        const key = 'rentmate_contact_messages';
+        const existing = JSON.parse(localStorage.getItem(key) || '[]');
+        existing.push(data);
+        localStorage.setItem(key, JSON.stringify(existing, null, 2));
+
+        status.value = 'Message saved locally. In a real app this would be sent to your server.';
+        form.reset();
+        setTimeout(() => { status.value = ''; }, 4000);
+      });
+    </script>
+  </body>
+</html>
